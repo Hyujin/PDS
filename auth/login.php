@@ -16,10 +16,10 @@
 </head>
 <body>
 <div class="container" >
-  <div class="float-left">
+  <div class="float-left bg-primary">
     <img class="page-illustration" src="../res/woman-on-a-phone.svg" height="250vw">
     <div class="page-title"> ALTRIA PAYROLL</div>
-    <div class="page-subtitle"> for admins </div>
+    <div class="page-subtitle"> for employees </div>
   </div>
 
   <div class="float-right">
@@ -29,7 +29,7 @@
       
        <form class="form-group" action="../controllers/login.php onSubmit="return validate();">
 
-        <div class="log-in-text text-center mb-2">Please log in to access Payroll Admin </div>
+        <div class="log-in-text text-center mb-2">Please log in to access Altria Payroll </div>
 
         <?php 
         if(isset($_SESSION["errorMessage"])) {
