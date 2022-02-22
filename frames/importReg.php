@@ -37,11 +37,11 @@ include("../controllers/getImports.php");
        <div class="row">
         <div class="col-6"></div>
         <div class="col-6 import-toggle" id="importFrm" style="display: none;">
-            <div class="input-group input-group-sm">
+            <div class="input-group input-group-sm position-relative">
                 <form action="../controllers/emp_Import.php" method="post" enctype="multipart/form-data">
                     <div class="form-control" style="border: 0;">
                         <input class="form-control form-control-sm" id="formFileSm"  type="file" name="file" />
-                        <input type="submit" class="btn btn-primary btn-sm" name="importSubmit" value="IMPORT">
+                        <input type="submit" class="btn btn-primary btn-sm position-absolute top-50 end-0 translate-middle-y" name="importSubmit" value="IMPORT">
                     </div>
                 </form>
             </div>  
@@ -51,7 +51,7 @@ include("../controllers/getImports.php");
             <table class="table table-responsive table-striped table-light">
                 <thead class="table-primary">
                     <th class="col">
-                        <input type="checkbox" class="radio" id="allMarked">
+                        <input type="checkbox" class="radio ms-3" id="allMarked">
                     </th>
                     <th class="col">Name</th>
                     <th class="col">Role</th>
@@ -66,7 +66,7 @@ include("../controllers/getImports.php");
                 <tbody>
                     <tr class="table-hover align-bottom">
                         <td class="col">
-                            <input type="checkbox" class="radio">
+                            <input type="checkbox" class="radio ms-3">
                         </td>
                         <td class="col">Chelly Ombiga</td>
                         <td class="col">HR</td>
@@ -83,7 +83,7 @@ include("../controllers/getImports.php");
                     </tr>
                     <tr class="table-hover align-bottom">
                         <td class="col">
-                            <input type="checkbox" class="radio">
+                            <input type="checkbox" class="radio ms-3">
                         </td>
                         <td class="col">Yujin Yeongssil</td>
                         <td class="col">IT Support</td>
