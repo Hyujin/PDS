@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-<div class="container" >
+<div>
   <div class="float-left bg-primary">
     <img class="page-illustration" src="../res/woman-on-a-phone.svg" height="250vw">
     <div class="page-title"> ALTRIA PAYROLL</div>
@@ -27,7 +27,7 @@
     <div class="login-form">
       <img class="page-altria-logo mb-4" src="../res/altria.png" height="55px">
       
-       <form class="form-group" action="../controllers/login.php onSubmit="return validate();">
+       <form class="form-group" method="POST" action="../controllers/login.php onSubmit="return validate();">
 
         <div class="log-in-text text-center mb-2">Please log in to access Altria Payroll </div>
 
