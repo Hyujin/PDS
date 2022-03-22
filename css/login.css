@@ -15,18 +15,6 @@ body {
   max-width: 100%;
 }
 
-.backgrounds {
-  background: linear-gradient(rgba(35, 43, 85, 0.75), rgba(35, 43, 85, 0.95)),
-    url(https://images.pexels.com/photos/7078269/pexels-photo-7078269.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
-      no-repeat center center;
-  background-size: cover;
-  border-top: solid 1px rgba(255, 255, 255, 0.5);
-  border-radius: 5px;
-  box-shadow: 12px 14px 14px rgba(0, 0, 0, 0.397);
-  overflow: hidden;
-  transition: all 0.5s ease;
-}
-
 .float-left{
   float: left;
   width: 50%;
@@ -77,15 +65,20 @@ body {
 }
 
 .footer{
-  height: 5%;
-  position: relative;
-}
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 100%;
+  height: 2.5rem;
+  }
 
 }
+
+
 /* Phones */
 @media only screen and (max-width: 600px) {
   body {
-    background-color: lightblue;
+    background-color: red;
     font-size: 3vw !important;
   }
   .container{
@@ -93,6 +86,7 @@ body {
   }
 
   .float-left{
+    display: none !important;
     position: absolute;
     top: 50%;
     left: 50;
@@ -101,6 +95,23 @@ body {
 
   .float-right{
     position: relative;
-    margin-top: 55%;
+    width: 92%;
+  }
+
+  .login-form{
+    position: relative;
+    margin-top: 40%;
+  }
+
+  img{
+    margin-left: 38%;
+    margin-top: -30%;
+  }
+
+  .footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
   }
 }

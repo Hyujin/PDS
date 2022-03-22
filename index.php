@@ -10,18 +10,22 @@ include_once ('controllers/db_conn.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <title>Altria Payslip Portal</title>
-    <script type="text/css">
+    <style type="text/css">
+        body{
+            background-color: red:
+        }
         p{
-            font-size: 11px !important;
+            font-size: 11pt !important;
         }
         label{
-            font-size: 11px;
+            font-size: 11pt;
         }
-    </script>
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-print-none">
   <div class="container-fluid">
   <img src="altria.png" alt="altria_logo" height="45vw" class="ms-3 me-5">
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,164 +34,203 @@ include_once ('controllers/db_conn.php');
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="dashboard.php">Welcome, Joe Alwyn</a>
+                    <a class="nav-link" aria-current="page" href="dashboard.php">Welcome, Eugene Cortes</a>
                     </li>
                 </ul>
                 <div class="dropdown me-5">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="../res/meow.png" alt="meow" width="35" height="35" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-1">Joe</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-light text-small shadow">
-                        <li><a class="dropdown-item" href="#">Update Username</a></li>
-                        <li><a class="dropdown-item" href="#">Change Password</a></li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
-                    </ul>
-                </div>
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="res/meow.png" alt="meow" width="35" height="35" class="rounded-circle">
+                    <span class="d-none d-sm-inline mx-1">Yujin</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-light text-small shadow">
+                    <li><a class="dropdown-item" href="#">Update Username</a></li>
+                    <li><a class="dropdown-item" href="#">Change Password</a></li>
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                </ul>
+            </div>
             </div>
   </div>
 </nav>
 
-<div class="container-fluid d-flex justify-content-start mt-5 ms-3 me-3 align-middle">
-            <div class="float-start ms-5 w-25 p-2">
-                <label for="fullname" class="label">Name: </label>
-                <p class="text-secondary">My Name Here</p>
+<!-- Payslip Grid system -->
 
-                <label for="fullname" class="label">Role: </label>
-                <p class="text-secondary">My Role Here</p> 
+<div class="container">
+
+        <div class="row mt-3 mb-3">
+            <div class="col-10">
+                <h6>Altria Payslip Portal</h6>
             </div>
-
-</div>
-        <!--  Rate   -->
-
-<div class="container-fluid d-flex justify-content-start mt-1 ms-3 me-3 align-middle">
-            <div class="float-start ms-5 w-25 p-2">
-                <label for="fullname" class="label">Daily Rate: </label>
-                <p class="text-secondary">Php 800. 00</p>
-
-                <label for="fullname" class="label">Hourly Rate: </label>
-                <p class="text-secondary">Php 100. 00</p> 
+            <div class="col-2 d-print-none">
+                <a href="index.php" class="btn-btn-sm"><i class="fa-solid fa-arrow-rotate-right">refresh</i></a>
             </div>
-
-            <div class="float-end ms-5 w-25 p-2">
-                <label for="fullname" class="label">Allowance Hourly Rate: </label>
-                <p class="text-secondary">Php. 50. 00</p>
-
-                <label for="fullname" class="label">Night Differential Rate: </label>
-                <p class="text-secondary">Php 8. 00</p> 
-            </div>
-            
-</div> 
-
-        <!--  Manhour   -->
-
-        <div class="container-fluid d-flex justify-content-start mt-1 ms-3 me-3 align-middle">
-                <div class="float-start ms-5 w-25 p-2">
-                    <label for="fullname" class="label">Total Worked Hours: </label>
-                    <p class="text-secondary">80 Hrs</p>
-
-                    <label for="fullname" class="label">Total ND hours: </label>
-                    <p class="text-secondary">70 Hrs</p>
-
-                    <label for="fullname" class="label">Reg Hol Hours: </label>
-                    <p class="text-secondary">0 Hrs</p> 
-                </div>
-
-                <div class="float-start ms-5 w-25 p-2">
-
-                    <label for="fullname" class="label">OT Hours: </label>
-                    <p class="text-secondary">0 Hrs</p>
-
-                    <label for="fullname" class="label">SPL Hol Hrs: </label>
-                    <p class="text-secondary">0 Hrs</p> 
-
-                    <label for="fullname" class="label">Prem Hours: </label>
-                    <p class="text-secondary">0 Hrs</p> 
-            
-                </div>
-        </div> 
-
-                <!--  Manhour   -->
-
-        <div class="container-fluid d-flex justify-content-start mt-1 ms-3 me-3 align-middle">
-            <div class="float-start ms-5 w-25 p-2">
-                <label for="fullname" class="label">Basic Hours Pay: </label>
-                <p class="text-secondary">80 Hrs</p>
-
-                <label for="fullname" class="label">Night Differential Pay: </label>
-                <p class="text-secondary">70 Hrs</p>
-
-                <label for="fullname" class="label">Allowance Pay: </label>
-                <p class="text-secondary">0 Hrs</p>
-
-                <label for="fullname" class="label">Dispute: </label>
-                <p class="text-secondary">0 Hrs</p> 
-            </div>
-
-            <div class="float-end ms-5 w-25 p-2">
-                <label for="fullname" class="label">Special Holiday Pay: </label>
-                <p class="text-secondary">0 Hrs</p>
-
-                <label for="fullname" class="label">Regular Holiday Pay: </label>
-                <p class="text-secondary">0 Hrs</p> 
-
-                <label for="fullname" class="label">Premium Pay: </label>
-                <p class="text-secondary">0 Hrs</p>
-
-                <label for="fullname" class="label">OT Pay: </label>
-                <p class="text-secondary">0 Hrs</p> 
-            </div>
-        </div> 
-
-                <!--  Deductions   -->
-
-        <div class="container-fluid d-flex justify-content-start mt-1 ms-3 me-3 align-middle">
-                <div class="float-start ms-5 w-25 p-2">
-                    <label for="fullname" class="label">SSS: </label>
-                    <p class="text-secondary">80 Hrs</p>
-
-                    <label for="fullname" class="label">PHIC: </label>
-                    <p class="text-secondary">70 Hrs</p>
-
-                    <label for="fullname" class="label">PAG-IBIG: </label>
-                    <p class="text-secondary">0 Hrs</p> 
-                </div>
-
-                <div class="float-start ms-5 w-25 p-2">
-
-                    <label for="fullname" class="label">Others: </label>
-                    <p class="text-secondary">0 Hrs</p>
-
-                    <label for="fullname" class="label">CA: </label>
-                    <p class="text-secondary">0 Hrs</p> 
-
-                    <label for="fullname" class="label">Total Deductions: </label>
-                    <p class="text-secondary">0 Hrs</p> 
-            
-                </div>
+           
         </div>
-                <!--  Final   -->
 
-        <div class="container-fluid d-flex justify-content-start mt-5 ms-3 me-3 align-middle">
-            <div class="float-start ms-5 w-25 p-2">
-                <label for="fullname" class="label">Gross Pay: </label>
-                <p class="text-secondary">Php. 18 000. 00</p>
+        <div class="row mt-3 border-bottom">
+            <label for="Employee" class="mb-1">Employee</label>
+            <div class="col-3">
+                <label for="fullname" class="label ms-3">Name: </label>
+                <p class="text-secondary ms-3">My Name Here</p>
+            </div>
+            <div class="col-3">
+                <label for="fullname" class="label ms-3">Role: </label>
+                <p class="text-secondary ms-3">My Role Here</p> 
+            </div>
+            <div class="col-6"></div>
+        </div>
 
-                <label for="fullname" class="label">Net Pay: </label>
-                <p class="text-secondary">Php 18 000. 00</p> 
+        <div class="row mt-1 border-bottom">
+        <label for="Rate" class="mb-1">Rate</label>
+            <div class="col">
+                <label for="fullname" class="label ms-3">Daily Rate: </label>
+                <p class="text-secondary ms-3">Php 800. 00</p>
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">Hourly Rate: </label>
+                <p class="text-secondary ms-3">Php 100. 00</p> 
             </div>
 
+            <div class="col">
+                <label for="fullname" class="label ms-3">Allowance Hourly Rate: </label>
+                <p class="text-secondary ms-3">Php. 50. 00</p>
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">Night Differential Rate: </label>
+                <p class="text-secondary ms-3">Php 8. 00</p> 
+            </div>
+        </div>
+
+        <div class="row mt-1">
+        <label for="Worked hours" class="mb-1">Worked Hours</label>
+            <div class="col">
+                <label for="fullname" class="label ms-3">Total Worked Hours: </label>
+                <p class="text-secondary ms-3">80 Hrs</p>
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">Total ND hours: </label>
+                <p class="text-secondary ms-3">70 Hrs</p>
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">Reg Hol Hours: </label>
+                <p class="text-secondary ms-3">0 Hrs</p> 
+            </div>
+            <div class="col"></div>
+
+        </div>
+        <div class="row mt-1 border-bottom">
+            <div class="col">
+                <label for="fullname" class="label ms-3">OT Hours: </label>
+                <p class="text-secondary ms-3">0 Hrs</p>
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">SPL Hol Hrs: </label>
+                <p class="text-secondary ms-3">0 Hrs</p> 
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">Prem Hours: </label>
+                <p class="text-secondary ms-3">0 Hrs</p> 
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <div class="row mt-1">
+        <label for="Pay" class="mb-1">Pay</label>
+            <div class="col">
+                <label for="fullname" class="label ms-3">Basic Hours Pay: </label>
+                <p class="text-secondary ms-3">80 Hrs</p>
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">Night Differential Pay: </label>
+                <p class="text-secondary ms-3">70 Hrs</p>
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">Allowance Pay: </label>
+                <p class="text-secondary ms-3">0 Hrs</p>
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">Dispute: </label>
+                <p class="text-secondary ms-3">0 Hrs</p>
+            </div>
+        </div>
+
+        <div class="row mt-1 border-bottom">
+            <div class="col">
+                <label for="fullname" class="label ms-3">Special Holiday Pay: </label>
+                <p class="text-secondary ms-3">0 Hrs</p>
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">Regular Holiday Pay: </label>
+                <p class="text-secondary ms-3">0 Hrs</p> 
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">Premium Pay: </label>
+                <p class="text-secondary ms-3">0 Hrs</p>
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">OT Pay: </label>
+                <p class="text-secondary ms-3">0 Hrs</p> 
+            </div>
+        </div>
+
+        <div class="row mt-1">
+        <label for="Deductions" class="mb-1">Deductions</label>
+            <div class="col">
+                <label for="fullname" class="label ms-3">SSS: </label>
+                    <p class="text-secondary ms-3">80 Hrs</p>
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">PHIC: </label>
+                    <p class="text-secondary ms-3">70 Hrs</p>
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">PAG-IBIG: </label>
+                    <p class="text-secondary ms-3">0 Hrs</p>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row mt-1 border-bottom">
+            <div class="col">
+                <label for="fullname" class="label ms-3">Others: </label>
+                    <p class="text-secondary ms-3">0 Hrs</p>
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">CA: </label>
+                    <p class="text-secondary ms-3">0 Hrs</p>
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">Total Deductions: </label>
+                    <p class="text-secondary ms-3">0 Hrs</p>
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <div class="row mt-1 border-bottom">
+        <label for="Final" class="mb-1">Final Pay</label>
+            <div class="col">
+                <label for="fullname" class="label ms-3">Gross Pay: </label>
+                <p class="text-secondary ms-3">Php. 18 000. 00</p>
+            </div>
+            <div class="col">
+                <label for="fullname" class="label ms-3">Net Pay: </label>
+                <p class="text-secondary ms-3">Php 18 000. 00</p> 
+            </div>
+        </div>
+
+        <div class="row mt-5" id="print-btn">
+            <div class="col-10"></div>
+            <div class="col-2">
+                <button class="btn btn-sm btn-primary d-print-none" onclick="window.print();return false;">PRINT</button>
+            </div>
+        </div>
+
 </div>
 
-        </div> 
 
-        <!--  Print Button   -->
 
-        <!-- <button class="btn btn-small btn-success">PRINT</button> -->
 
-</div>
+<!-- End Payslip Grid system -->
 
-<div class="footer" id="footer">
+<div class="footer pt-1 mt-4" id="footer">
     <p class="ms-3 mt-2 text-center">Altria Payslip v0.2</p>
     <p class="ms-3 mt-2 text-center">Altria Call Center OPC
     3rd Floor Consuelo Bldg. JP Laurel Ave
