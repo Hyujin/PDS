@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 ?>
 <html>
 <head>
@@ -19,45 +19,47 @@
   <div class="float-left bg-primary">
     <img class="page-illustration" src="../res/woman-on-a-phone.svg" height="250vw">
     <div class="page-title"> ALTRIA PAYROLL</div>
-    <div class="page-subtitle"> for employees </div>
+    <div class="page-subtitle"> for employees</div>
   </div>
 
   <div class="float-right">
     <div class="login-container">
-    <div class="login-form">
-      <img class="page-altria-logo mb-4" src="../res/altria.png" height="55px">
-      
-       <form class="form-group" method="POST" action="../controllers/login.php onSubmit="return validate();">
+
+    
+    <div class="login-form ">
+    <img class="page-altria-logo mb-4" src="../res/altria.png" height="55px">
+       <form class="form-group" method="POST" action="../controllers/login.php">
 
         <div class="log-in-text text-center mb-2">Please log in to access Altria Payroll </div>
 
         <?php 
         if(isset($_SESSION["errorMessage"])) {
         ?>
-        <div class="error-message"><?php  echo $_SESSION["errorMessage"]; ?></div>
+        <div class="text-danger text-center"><small?><?php  echo $_SESSION["errorMessage"]; ?></small></div>
         <?php 
         unset($_SESSION["errorMessage"]);
         } 
         ?>
 
-        <label id="user_info" class="mx-3 form-label">Username</label><br>
-        <input id="user_name" class="mx-3 mb-2 form-control" name="username" type="text"><br>
+        <label id="userinfo" class="mx-3 form-label">Username</label><br>
+        <input id="username" class="mx-3 mb-2 form-control" name="username" type="text"><br>
 
         <label id="password_info" class="mx-3 form-label">Password</label>
         <input id="password" class="mx-3 mb-5 form-control" name="password" type="password">
-        <button type="submit" name="login" value="Login" class="mx-3 btn btn-lg btn-primary form-control">Log in</button>
+        <button type="submit" name="login" value="Login" class="mx-3 btn btn-sm btn-primary form-control">Log in</button>
             
     </form>
     </div>
-    <footer class="footer">
-      <div class="text-center footer">
-        <p><small>Altria Call Center OPC. All Rights Reserved  &#169; 2022 </small></p>
-      </div>
-    </footer>
+
+
+     
   </div>
   
   </div>
-
+  <div class="text-center footer">
+        <p><small>Altria Call Center OPC. 2022 </small></p>
+      </div>
 </div>
+     
 </body>
 </html>
