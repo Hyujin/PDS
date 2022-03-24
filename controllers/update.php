@@ -1,15 +1,11 @@
 <?php
 session_start();
+
 include_once ('db_conn.php');
 
 $emp_id = $_SESSION['emp_id'];
 $new_pass = $_POST['pass1'];
 $pass2 = $_POST['pass2'];
-
-echo "new pass: ";
-echo $new_pass;
-echo "emp id: ";
-echo $emp_id;
 
 if($new_pass = $pass2){
 

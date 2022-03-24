@@ -2,23 +2,7 @@
 session_start();
 if(!isset($_SESSION['emp_id'])){
     header('location: auth/login.php');
-}
-$emp_id = $_SESSION['emp_id'];
-include_once ('controllers/db_conn.php');
-$sql_user = ("SELECT users.id, employees.fullname, users.username, employees.role, users.emp_id, employees.id 
-                FROM users
-                INNER JOIN employees ON employees.id = users.emp_id
-                WHERE users.emp_id = $emp_id LIMIT 1");
-                $result_user = $db->query($sql_user);
 
-if ($result_user->num_rows > 0) {
-  // output data of each row
-  while($row = $result_user->fetch_assoc()) {
-        $id       = $row["id"];
-        $fullname = $row["fullname"];
-        $username = $row["username"];
-        $role     = $row["role"];
-  }
 }
 ?>
 <!DOCTYPE html>
@@ -54,7 +38,7 @@ if ($result_user->num_rows > 0) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="dashboard.php">Welcome, <?php echo $fullname ?></a>
+                    <a class="nav-link" aria-current="page" href="dashboard.php">Welcome, <?php echo $_SESSION['fullname'] ?></a>
                     </li>
                 </ul>
                 <div class="dropdown me-5">
@@ -65,7 +49,7 @@ if ($result_user->num_rows > 0) {
                 <ul class="dropdown-menu dropdown-menu-light text-small shadow">
                     <li><a class="dropdown-item" href="#">Update Username</a></li>
                     <li><a class="dropdown-item" href="#">Change Password</a></li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    <li><a class="dropdown-item" href="controllers/logout.php">Sign out</a></li>
                 </ul>
             </div>
             </div>
@@ -76,25 +60,30 @@ if ($result_user->num_rows > 0) {
 
 <div class="container">
 
-        <div class="row mt-3 mb-3">
+        <div class="row mt-3">
             <div class="col-10">
                 <h6>Altria Payslip Portal</h6>
             </div>
             <div class="col-2 d-print-none">
                 <a href="index.php" class="btn-btn-sm"><i class="fa-solid fa-arrow-rotate-right">refresh</i></a>
             </div>
-           
+        </div>
+        <div class="row">
+            <p class="text-secondary">
+                Payroll Date: <?php echo $_SESSION['payroll_batch'] ?>
+                
+            </p>
         </div>
 
-        <div class="row mt-3 border-bottom">
+        <div class="row border-bottom">
             <label for="Employee" class="mb-1">Employee</label>
             <div class="col-3">
                 <label for="fullname" class="label ms-3">Name: </label>
-                <p class="text-secondary ms-3"><?php echo $fullname ?></p>
+                <p class="text-secondary ms-3"><?php echo $_SESSION['fullname'] ?></p>
             </div>
             <div class="col-3">
                 <label for="fullname" class="label ms-3">Role: </label>
-                <p class="text-secondary ms-3"><?php echo $role ?></p> 
+                <p class="text-secondary ms-3"><?php echo $_SESSION['role'] ?></p> 
             </div>
             <div class="col-6"></div>
         </div>
@@ -103,20 +92,20 @@ if ($result_user->num_rows > 0) {
         <label for="Rate" class="mb-1">Rate</label>
             <div class="col">
                 <label for="fullname" class="label ms-3">Daily Rate: </label>
-                <p class="text-secondary ms-3">Php 800. 00</p>
+                <p class="text-secondary ms-3"><?php echo $_SESSION['daily_rate']  ?></p>
             </div>
             <div class="col">
                 <label for="fullname" class="label ms-3">Hourly Rate: </label>
-                <p class="text-secondary ms-3">Php 100. 00</p> 
+                <p class="text-secondary ms-3"><?php echo $_SESSION['hrly_rate'] ?></p> 
             </div>
 
             <div class="col">
                 <label for="fullname" class="label ms-3">Allowance Hourly Rate: </label>
-                <p class="text-secondary ms-3">Php. 50. 00</p>
+                <p class="text-secondary ms-3"><?php echo $_SESSION['allow_hr_rate']?></p>
             </div>
             <div class="col">
                 <label for="fullname" class="label ms-3">Night Differential Rate: </label>
-                <p class="text-secondary ms-3">Php 8. 00</p> 
+                <p class="text-secondary ms-3"><?php echo $_SESSION['nd_rate']?></p> 
             </div>
         </div>
 
@@ -124,15 +113,15 @@ if ($result_user->num_rows > 0) {
         <label for="Worked hours" class="mb-1">Worked Hours</label>
             <div class="col">
                 <label for="fullname" class="label ms-3">Total Worked Hours: </label>
-                <p class="text-secondary ms-3">80 Hrs</p>
+                <p class="text-secondary ms-3"><?php echo $_SESSION['total_worked_hrs']?></p>
             </div>
             <div class="col">
                 <label for="fullname" class="label ms-3">Total ND hours: </label>
-                <p class="text-secondary ms-3">70 Hrs</p>
+                <p class="text-secondary ms-3"><?php echo $_SESSION['total_nd_hrs']?></p>
             </div>
             <div class="col">
                 <label for="fullname" class="label ms-3">Reg Hol Hours: </label>
-                <p class="text-secondary ms-3">0 Hrs</p> 
+                <p class="text-secondary ms-3"><?php echo $_SESSION['reg_hol_hrs']?></p> 
             </div>
             <div class="col"></div>
 
@@ -140,15 +129,15 @@ if ($result_user->num_rows > 0) {
         <div class="row mt-1 border-bottom">
             <div class="col">
                 <label for="fullname" class="label ms-3">OT Hours: </label>
-                <p class="text-secondary ms-3">0 Hrs</p>
+                <p class="text-secondary ms-3"><?php echo $_SESSION['ot_hrs']?></p>
             </div>
             <div class="col">
                 <label for="fullname" class="label ms-3">SPL Hol Hrs: </label>
-                <p class="text-secondary ms-3">0 Hrs</p> 
+                <p class="text-secondary ms-3"><?php echo $_SESSION['spl_hol_hrs']?></p> 
             </div>
             <div class="col">
                 <label for="fullname" class="label ms-3">Prem Hours: </label>
-                <p class="text-secondary ms-3">0 Hrs</p> 
+                <p class="text-secondary ms-3"><?php echo $_SESSION['prem_hrs'] ?></p> 
             </div>
             <div class="col"></div>
         </div>
@@ -157,38 +146,38 @@ if ($result_user->num_rows > 0) {
         <label for="Pay" class="mb-1">Pay</label>
             <div class="col">
                 <label for="fullname" class="label ms-3">Basic Hours Pay: </label>
-                <p class="text-secondary ms-3">80 Hrs</p>
+                <p class="text-secondary ms-3"><?php echo $_SESSION['basic_hrs_pay'] ?></p>
             </div>
             <div class="col">
                 <label for="fullname" class="label ms-3">Night Differential Pay: </label>
-                <p class="text-secondary ms-3">70 Hrs</p>
+                <p class="text-secondary ms-3"><?php echo $_SESSION['nds_pay']?></p>
             </div>
             <div class="col">
                 <label for="fullname" class="label ms-3">Allowance Pay: </label>
-                <p class="text-secondary ms-3">0 Hrs</p>
+                <p class="text-secondary ms-3"><?php echo $_SESSION['allow_pay']?></p>
             </div>
             <div class="col">
                 <label for="fullname" class="label ms-3">Dispute: </label>
-                <p class="text-secondary ms-3">0 Hrs</p>
+                <p class="text-secondary ms-3"><?php echo $_SESSION['dispute']?></p>
             </div>
         </div>
 
         <div class="row mt-1 border-bottom">
             <div class="col">
                 <label for="fullname" class="label ms-3">Special Holiday Pay: </label>
-                <p class="text-secondary ms-3">0 Hrs</p>
+                <p class="text-secondary ms-3"><?php echo $_SESSION['spl_pay']?></p>
             </div>
             <div class="col">
                 <label for="fullname" class="label ms-3">Regular Holiday Pay: </label>
-                <p class="text-secondary ms-3">0 Hrs</p> 
+                <p class="text-secondary ms-3"><?php echo $_SESSION['reg_hol_pay']?></p> 
             </div>
             <div class="col">
                 <label for="fullname" class="label ms-3">Premium Pay: </label>
-                <p class="text-secondary ms-3">0 Hrs</p>
+                <p class="text-secondary ms-3"><?php echo $_SESSION['prem_hol_pay'] ?></p>
             </div>
             <div class="col">
                 <label for="fullname" class="label ms-3">OT Pay: </label>
-                <p class="text-secondary ms-3">0 Hrs</p> 
+                <p class="text-secondary ms-3"><?php echo  $_SESSION['ot_pay']  ?></p> 
             </div>
         </div>
 
@@ -225,15 +214,17 @@ if ($result_user->num_rows > 0) {
         </div>
 
         <div class="row mt-1 border-bottom">
-        <label for="Final" class="mb-1">Final Pay</label>
+        <label for="Final" class="mb-1">Total Pay</label>
             <div class="col">
                 <label for="fullname" class="label ms-3">Gross Pay: </label>
-                <p class="text-secondary ms-3">Php. 18 000. 00</p>
+                <p class="text-secondary ms-3"><?php echo $_SESSION['gross_pay'] ?></p>
             </div>
             <div class="col">
                 <label for="fullname" class="label ms-3">Net Pay: </label>
-                <p class="text-secondary ms-3">Php 18 000. 00</p> 
+                <p class="text-secondary ms-3"><?php echo $_SESSION['net_pay']?></p> 
             </div>
+            <div class="col"></div>
+            <div class="col"></div>
         </div>
 
         <div class="row mt-2" id="print-btn">
